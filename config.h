@@ -22,6 +22,7 @@ static const Rule rules[] = {
 
 /* layout(s) */
 static const float mfact      = 0.50; /* factor of master area size [0.05..0.95] */
+static const int nmaster      = 1;    /* number of clients in master area */
 static const Bool resizehints = False; /* True means respect size hints in tiled resizals */
 
 static const Layout layouts[] = {
@@ -47,20 +48,23 @@ static const char *dmenucmd[] = { "dmenu_run", "-fn", font, "-p", "Run Program:"
 static const char *termcmd[]  = { "uxterm", NULL };
 static const char *firefox[]  = { "iceweasel", NULL };
 
+/* include tagshift  patches*/
+#include "shiftview.c"
+#include "nextprevtag.c"
+
 static Key keys[] = {
 	/* modifier                     key        function        argument */
 	{ MODKEY,                       XK_r,      spawn,          {.v = dmenucmd } },
 	{ MODKEY,                       XK_Return, spawn,          {.v = termcmd } },
 	{ MODKEY,                       XK_w,      spawn,          {.v = firefox } },
 
-	/*{ MODKEY,                       XK_Right,  inctag,         {.i = +1} },
-	{ MODKEY,                       XK_Left,   inctag,         {.i = -1} },*/
-
 	{ MODKEY,                       XK_Right,  shiftview,      {.i = +1} },
 	{ MODKEY,                       XK_Left,   shiftview,      {.i = -1} },
 	{ MODKEY|ShiftMask,             XK_Right,  view_adjacent,  {.i = +1} },
 	{ MODKEY|ShiftMask,             XK_Left,   view_adjacent,  {.i = -1} },
 
+    { MODKEY,                       XK_i,      incnmaster,     {.i = +1 } },
+    { MODKEY,                       XK_d,      incnmaster,     {.i = -1 } },
 	{ MODKEY,                       XK_b,      togglebar,      {0} },
 	{ MODKEY,                       XK_j,      focusstack,     {.i = +1 } },
 	{ MODKEY,                       XK_k,      focusstack,     {.i = -1 } },
