@@ -1,5 +1,5 @@
 #!/bin/bash
 
 while true; do
-    exec ~/dwm/dwm
+    exec $PWD/dwm 2> error.log
 done
