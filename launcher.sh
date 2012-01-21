@@ -1,5 +1,7 @@
 #!/bin/bash
 
+DWMDIR=$HOME/dwm
+
 while true; do
-    exec $HOME/dwm/dwm 2> $HOME/dwm/error.log
+    exec $DWMDIR/dwm 2> $DWMDIR/error.log
 done
