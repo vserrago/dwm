@@ -1,3 +1,12 @@
+/* 
+ * Movestack
+ *
+ * This plugin allows you to move clients around in the stack and swap them 
+ * with the master. It emulates the behavior off mod+shift+j and mod+shift+k
+ * in Xmonad. movestack(+1) will swap the client with the current focus with
+ * the next client. movestack(-1) will swap the client with the current focus
+ * with the previous client.
+*/
 void
 movestack(const Arg *arg) {
 	Client *c = NULL, *p = NULL, *pc = NULL, *i;
