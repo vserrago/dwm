@@ -59,9 +59,12 @@ static const char *dmenucmd[] = { "dmenu_run", "-fn", font, "-p", "Run Program:"
 static const char *termcmd[]  = { "uxterm", NULL };
 static const char *firefox[]  = { "iceweasel", NULL };
 
-/* include tagshift  patches*/
+/* Include tagshift  patches*/
 #include "shiftview.c"
 #include "nextprevtag.c"
+
+/* Include stack patches*/
+#include "movestack.c"
 
 static Key keys[] = {
 	/* modifier                     key        function        argument */
@@ -69,10 +72,14 @@ static Key keys[] = {
 	{ MODKEY,                       XK_Return, spawn,          {.v = termcmd } },
 	{ MODKEY,                       XK_w,      spawn,          {.v = firefox } },
 
+    /* Tagshift Keys*/
 	{ MODKEY,                       XK_Right,  shiftview,      {.i = +1} },
 	{ MODKEY,                       XK_Left,   shiftview,      {.i = -1} },
 	{ MODKEY|ShiftMask,             XK_Right,  view_adjacent,  {.i = +1} },
 	{ MODKEY|ShiftMask,             XK_Left,   view_adjacent,  {.i = -1} },
+    /* Movestack Keys*/
+	{ MODKEY|ShiftMask,             XK_j,      movestack,      {.i = +1 } },
+	{ MODKEY|ShiftMask,             XK_k,      movestack,      {.i = -1 } },
 
     { MODKEY,                       XK_i,      incnmaster,     {.i = +1 } },
     { MODKEY,                       XK_d,      incnmaster,     {.i = -1 } },
