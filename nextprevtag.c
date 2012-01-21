@@ -1,3 +1,4 @@
+/* Function to increment or decrement the selected tag */
 void
 view_adjacent(const Arg *arg)
 {
